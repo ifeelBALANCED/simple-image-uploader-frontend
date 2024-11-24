@@ -1,0 +1,26 @@
+{
+  "presets": [
+    "@babel/typescript",
+    "@babel/react",
+    "patronum/babel-preset"
+  ],
+  "plugins": [
+    [
+      "effector/babel-plugin",
+      {
+        "addLoc": true,
+        "debugSids": true,
+        "factories": [
+          "@withease/factories",
+          "effector-forms"
+        ]
+      }
+    ],
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ]
+  ]
+}
