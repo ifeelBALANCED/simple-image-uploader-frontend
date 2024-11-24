@@ -1,8 +1,6 @@
-# My Task Board (Frontend)
+# Simple Image Uploader (Frontend)
 
-![Challenge Thumbnail](https://i.ibb.co/5rmgjtZ/Challenge-58-Thumbnail.webp)
+![Challenge Thumbnail](https://csyxkpbavpcrhwqhcpyy.supabase.co/storage/v1/object/public/challenges/57/challenge-57-thumbnail)
 
-In this full-stack challenge, you will develop a straightforward task management application, which will involve
-implementing essential HTTP methods such as GET, POST, PUT, and DELETE. This project will provide an opportunity to
-demonstrate proficiency in full-stack development by creating a system that enables users to manage tasks using a range
-of fundamental HTTP operations.
+In full-stack development, a common task involves working with files. This challenge presents an opportunity to create a
+straightforward Image Upload application, enabling users to upload images.
