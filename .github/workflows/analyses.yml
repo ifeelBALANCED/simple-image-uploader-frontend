@@ -2,9 +2,9 @@ name: analyses
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   pull_request:
-    branches: [main, master]
+    branches: [main]
 
 jobs:
   install:
@@ -38,7 +38,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node_modules-
       - name: Biome Lint and Format Check
-        run: pnpm run lint && pnpm run format
+        run: pnpm run lint && pnpm run fmt
 
   typescript:
     needs: install
