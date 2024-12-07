@@ -1,6 +1,6 @@
+import { routes } from '@/shared/routing'
 import { Button, Group, Text, Title } from '@mantine/core'
 import { Link } from 'atomic-router-react' // eslint-disable-next-line import/no-internal-modules
-import { routes } from '@/shared/routing'
 
 export const Error404Page = () => {
   return (

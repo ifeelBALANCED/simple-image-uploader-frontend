@@ -1,95 +1,95 @@
-@import url('../../../node_modules/@mantine/core/styles.css');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600&display=swap');
-@import '@mantine/dropzone/styles.css';
+@import url("../../../node_modules/@mantine/core/styles.css");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600&display=swap");
+@import "@mantine/dropzone/styles.css";
 
 @layer tailwind {
-    @tailwind base;
+  @tailwind base;
 }
 
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-    :root {
-        --icon-color: currentColor;
-    }
+  :root {
+    --icon-color: currentColor;
+  }
 }
 
 @layer components {
-    /*
+  /*
             Our base class for icons inherits the current text color and applies common styles.
             We're using a specific component class to prevent potential style conflicts and utilize the [data-axis] attribute.
             */
-    .icon {
-        @apply select-none fill-current inline-block text-inherit box-content;
-    }
+  .icon {
+    @apply select-none fill-current inline-block text-inherit box-content;
+  }
 
-    /* Set icon size to 1em based on its aspect ratio, so we can use `font-size` to scale it */
-    .icon[data-axis*='x'] {
-        /* scale horizontally */
-        @apply w-[1em];
-    }
+  /* Set icon size to 1em based on its aspect ratio, so we can use `font-size` to scale it */
+  .icon[data-axis*="x"] {
+    /* scale horizontally */
+    @apply w-[1em];
+  }
 
-    .icon[data-axis*='y'] {
-        /* scale vertically */
-        @apply h-[1em];
-    }
+  .icon[data-axis*="y"] {
+    /* scale vertically */
+    @apply h-[1em];
+  }
 }
 
 :root {
-    --font-family-inter: 'Inter', sans-serif;
-    --font-size-xs: 0.625rem; /* 10px */
-    --font-size-sm: 0.75rem; /* 12px */
-    --font-size-base: 0.875rem; /* 14px */
+  --font-family-inter: "Inter", sans-serif;
+  --font-size-xs: 0.625rem; /* 10px */
+  --font-size-sm: 0.75rem; /* 12px */
+  --font-size-base: 0.875rem; /* 14px */
 }
 
 .text-base {
-    font-family: var(--font-family-inter), sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 500;
-    line-height: 1.5;
+  font-family: var(--font-family-inter), sans-serif;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 .text-small {
-    font-family: var(--font-family-inter), sans-serif;
-    font-size: var(--font-size-sm);
-    font-weight: 300;
-    line-height: 1.5;
+  font-family: var(--font-family-inter), sans-serif;
+  font-size: var(--font-size-sm);
+  font-weight: 300;
+  line-height: 1.5;
 }
 
 .text-button {
-    font-family: var(--font-family-inter), sans-serif;
-    font-size: var(--font-size-xs);
-    font-weight: 600;
-    line-height: 1.2;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
+  font-family: var(--font-family-inter), sans-serif;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .text-base-light {
-    font-family: var(--font-family-inter), sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: 300;
-    line-height: 1.5;
+  font-family: var(--font-family-inter), sans-serif;
+  font-size: var(--font-size-base);
+  font-weight: 300;
+  line-height: 1.5;
 }
 
 .nav-link {
-    @apply flex items-center gap-1 p-2 rounded-md transition-colors duration-200 text-gray-700 no-underline hover:bg-gray-100 hover:text-blue-600;
+  @apply flex items-center gap-1 p-2 rounded-md transition-colors duration-200 text-gray-700 no-underline hover:bg-gray-100 hover:text-blue-600;
 }
 
 .nav-link.active {
-    @apply bg-gray-100 text-blue-600;
+  @apply bg-gray-100 text-blue-600;
 }
 
 .nav-icon {
-    @apply w-5 h-5 transition-colors duration-200;
+  @apply w-5 h-5 transition-colors duration-200;
 }
 
 .nav-icon.active {
-    @apply text-blue-600;
+  @apply text-blue-600;
 }
 
 .mantine-List-itemWrapper,
 .mantine-List-itemLabel {
-    width: 100% !important; /* Ensure the wrapper takes full width */
+  width: 100% !important; /* Ensure the wrapper takes full width */
 }

@@ -1,6 +1,6 @@
-import { createRoot } from 'react-dom/client'
 import { App } from '@/app'
 import { appStarted } from '@/shared/config'
+import { createRoot } from 'react-dom/client'
 import './app/styles/index.css'
 
 const container = document.querySelector('#root') as HTMLElement

@@ -1,7 +1,7 @@
-import { Route } from 'atomic-router-react'
 import { BaseLayout } from '@/app/layout/base'
 // eslint-disable-next-line import/no-internal-modules
 import { routes } from '@/shared/routing'
+import { Route } from 'atomic-router-react'
 import { Error404Page } from './error404'
 import { LoginPage } from './login'
 import { PreviewPage } from './preview'

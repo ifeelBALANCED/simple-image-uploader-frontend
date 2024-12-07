@@ -1,9 +1,9 @@
-import { ActionIcon, Button, Group, useMantineColorScheme } from '@mantine/core'
-import { IconMoonStars, IconSun } from '@tabler/icons-react'
-import { Link } from 'atomic-router-react'
 // eslint-disable-next-line import/no-internal-modules
 import { routes } from '@/shared/routing'
 import { Icon } from '@/shared/ui/icon'
+import { ActionIcon, Button, Group, useMantineColorScheme } from '@mantine/core'
+import { IconMoonStars, IconSun } from '@tabler/icons-react'
+import { Link } from 'atomic-router-react'
 
 export const Header = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme()
