@@ -4,6 +4,9 @@
   "type": "module",
   "description": "In this full-stack challenge, you will develop a straightforward task management application, which will involve implementing essential HTTP methods such as GET, POST, PUT, and DELETE. This project will provide an opportunity to demonstrate proficiency in full-stack development by creating a system that enables users to manage tasks using a range of fundamental HTTP operations.",
   "homepage": "",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ifeelBALANCED/task-manager-app-frontend.git"
@@ -99,8 +102,5 @@
     "effector",
     "mantine",
     "tailwindcss"
-  ],
-  "engines": {
-    "node": ">=20.0.0"
-  }
+  ]
 }
