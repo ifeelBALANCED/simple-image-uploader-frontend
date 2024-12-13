@@ -90,7 +90,16 @@
     "name": "ifeelBALANCED",
     "email": "vladislavherasymenko@gmail.com"
   },
-  "keywords": ["react", "pwa", "frontend", "typescript", "vite"],
+  "keywords": [
+    "react",
+    "pwa",
+    "frontend",
+    "typescript",
+    "vite",
+    "effector",
+    "mantine",
+    "tailwindcss"
+  ],
   "engines": {
     "node": ">=20.0.0"
   }
