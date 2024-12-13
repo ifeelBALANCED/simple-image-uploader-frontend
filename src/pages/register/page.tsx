@@ -1,4 +1,4 @@
-import { registerForm } from '@/entities/auth'
+import { authModel } from '@/features/auth'
 import { routes } from '@/shared/routing'
 import { Button, Paper, PasswordInput, Text, TextInput, Title } from '@mantine/core'
 import { Link } from 'atomic-router-react'
@@ -6,7 +6,9 @@ import { useForm } from 'effector-forms'
 import { FormEventHandler } from 'react'
 
 export const RegisterPage = () => {
-  const { fields, eachValid, submit, isValid, hasError, errorText } = useForm(registerForm)
+  const { fields, eachValid, submit, isValid, hasError, errorText } = useForm(
+    authModel.registerForm,
+  )
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()

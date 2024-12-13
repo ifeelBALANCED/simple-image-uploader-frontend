@@ -30,6 +30,7 @@
     "@biomejs/cli-darwin-x64": "1.9.4",
     "@commitlint/cli": "^19.6.0",
     "@commitlint/config-conventional": "^19.6.0",
+    "@farfetched/core": "^0.13.0",
     "@mantine/core": "^7.14.3",
     "@mantine/dropzone": "^7.14.3",
     "@mantine/hooks": "^7.14.3",
@@ -52,6 +53,7 @@
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "vite-plugin-checker": "^0.8.0",
+    "wretch": "^2.11.0",
     "yup": "^1.5.0"
   },
   "devDependencies": {

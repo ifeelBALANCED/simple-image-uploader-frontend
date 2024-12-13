@@ -1,4 +1,4 @@
-import { loginForm } from '@/entities/auth'
+import { authModel } from '@/features/auth'
 // eslint-disable-next-line import/no-internal-modules
 import { routes } from '@/shared/routing'
 import { Button, Paper, PasswordInput, Text, TextInput, Title } from '@mantine/core'
@@ -7,7 +7,7 @@ import { useForm } from 'effector-forms'
 import { FormEventHandler } from 'react'
 
 export const LoginPage = () => {
-  const { fields, eachValid, submit, isValid, errorText, hasError } = useForm(loginForm)
+  const { fields, eachValid, submit, isValid, errorText, hasError } = useForm(authModel.loginForm)
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
     submit()

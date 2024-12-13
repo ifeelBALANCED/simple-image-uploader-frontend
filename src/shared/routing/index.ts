@@ -9,6 +9,7 @@ export const routes = {
   register: createRoute(),
   preview: createRoute<{ imageId: string }>(),
   notFound: createRoute(),
+  images: createRoute(),
 }
 
 export const routesMap = [
@@ -16,6 +17,7 @@ export const routesMap = [
   { path: '/preview/:imageId', route: routes.preview },
   { path: '/login', route: routes.login },
   { path: '/register', route: routes.register },
+  { path: '/images', route: routes.images },
 ]
 
 export const notFoundRoute = routes.notFound

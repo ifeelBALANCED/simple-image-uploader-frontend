@@ -1,1 +1,2 @@
-export { baseApi } from './api'
+export { baseEndpoints } from './config'
+export { externalApi } from './external'

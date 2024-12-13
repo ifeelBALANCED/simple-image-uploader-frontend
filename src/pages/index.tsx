@@ -3,17 +3,19 @@ import { BaseLayout } from '@/app/layout/base'
 import { routes } from '@/shared/routing'
 import { Route } from 'atomic-router-react'
 import { Error404Page } from './error404'
-import { LoginPage } from './login'
-import { PreviewPage } from './preview'
-import { RegisterPage } from './register'
-import { UploadPage } from './upload'
+import { ImagesPage, imagesRoute } from './images'
+import { LoginPage, loginRoute } from './login'
+import { PreviewPage, previewRoute } from './preview'
+import { RegisterPage, registerRoute } from './register'
+import { UploadPage, uploadRoute } from './upload'
 
 export const Pages = () => (
   <BaseLayout>
-    <Route route={routes.login} view={LoginPage} />
-    <Route route={routes.register} view={RegisterPage} />
+    <Route route={loginRoute} view={LoginPage} />
+    <Route route={registerRoute} view={RegisterPage} />
     <Route route={routes.notFound} view={Error404Page} />
-    <Route route={routes.upload} view={UploadPage} />
-    <Route route={routes.preview} view={PreviewPage} />
+    <Route route={uploadRoute} view={UploadPage} />
+    <Route route={previewRoute} view={PreviewPage} />
+    <Route route={imagesRoute} view={ImagesPage} />
   </BaseLayout>
 )
