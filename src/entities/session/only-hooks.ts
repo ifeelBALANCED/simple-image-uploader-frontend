@@ -1,3 +1,4 @@
+import { routes } from '@/shared/routing'
 import { RouteInstance, RouteParams, RouteParamsAndQuery, chainRoute } from 'atomic-router'
 import { Effect, EventCallable, StoreWritable, createEvent, sample } from 'effector'
 import { not } from 'patronum'
@@ -43,7 +44,8 @@ export function filterOnly<T>(config: {
 }
 
 /**
- * Clones the passed route and opens it only if user is authenticated
+ * Clones the passed route and opens it only if user is authenticated.
+ * If the user is not authenticated, redirects to the login page.
  * @param route Original route
  * @returns New route
  */
@@ -53,6 +55,18 @@ export function chainAuthenticated<Params extends RouteParams>(route: RouteInsta
   const alreadyAuthorized = sample({
     clock: sessionCheckStarted,
     filter: $isAuthenticated,
+  })
+
+  // sample({
+  //   clock: sessionCheckStarted,
+  //   filter: $isAuthenticated,
+  //   target: routes.images.open,
+  // })
+  //
+  sample({
+    clock: sessionCheckStarted,
+    filter: not($isAuthenticated),
+    target: routes.login.open,
   })
 
   return chainRoute({
@@ -73,6 +87,11 @@ export function chainAnonymous<Params extends RouteParams>(route: RouteInstance<
   const alreadyAnonymous = sample({
     clock: sessionCheckStarted,
     filter: not($isAuthenticated),
+  })
+
+  sample({
+    clock: alreadyAnonymous,
+    target: routes.login.open,
   })
 
   return chainRoute({

@@ -7,8 +7,8 @@ export const BaseLayout = ({ children }: PropsWithChildren) => {
     <div className="flex flex-col min-h-screen">
       <Header />
 
-      <main className="overflow-hidden p-2">
-        <Container className="flex flex-col items-center justify-center h-[calc(100vh_-_124px)] p-6">
+      <main className="flex items-center justify-center flex-1 overflow-auto p-4">
+        <Container className="h-full flex flex-col items-center justify-center">
           {children}
         </Container>
       </main>

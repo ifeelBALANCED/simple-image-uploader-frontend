@@ -1,12 +1,15 @@
+import { loginQuery } from '@/entities/auth'
 import { authModel } from '@/features/auth'
 // eslint-disable-next-line import/no-internal-modules
 import { routes } from '@/shared/routing'
 import { Button, Paper, PasswordInput, Text, TextInput, Title } from '@mantine/core'
 import { Link } from 'atomic-router-react'
 import { useForm } from 'effector-forms'
+import { useUnit } from 'effector-react'
 import { FormEventHandler } from 'react'
 
 export const LoginPage = () => {
+  const { loginPending } = useUnit({ loginPending: loginQuery.$pending })
   const { fields, eachValid, submit, isValid, errorText, hasError } = useForm(authModel.loginForm)
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
@@ -23,7 +26,7 @@ export const LoginPage = () => {
         </Link>
       </Text>
 
-      <form onSubmit={handleSubmit} className="space-y-4 mt-6">
+      <form onSubmit={handleSubmit} className="space-y-4 mt-6 min-w-[350px]">
         <TextInput
           label="Email"
           placeholder="you@mantine.dev"
@@ -64,6 +67,8 @@ export const LoginPage = () => {
           radius="md"
           size="md"
           disabled={!eachValid || !isValid}
+          loading={loginPending}
+          loaderProps={{ type: 'dots' }}
           className="bg-blue-500 hover:bg-blue-600 text-white"
         >
           Log In

@@ -1,11 +1,21 @@
-import { obj, str } from '@withease/contracts'
+import { num, obj, str } from '@withease/contracts'
+
+export const UserContract = obj({
+  id: num,
+  email: str,
+  created_at: str,
+  updated_at: str,
+})
 
 export const LoginContract = obj({
-  user_email: str,
-  user_uuid: str,
   token: str,
 })
 
+export const MeContract = obj({
+  user: UserContract,
+})
+
 export const RegisterContract = obj({
-  message: str,
+  token: str,
+  user: UserContract,
 })

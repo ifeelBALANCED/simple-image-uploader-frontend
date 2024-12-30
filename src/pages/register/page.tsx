@@ -1,11 +1,14 @@
+import { registerQuery } from '@/entities/auth'
 import { authModel } from '@/features/auth'
 import { routes } from '@/shared/routing'
 import { Button, Paper, PasswordInput, Text, TextInput, Title } from '@mantine/core'
 import { Link } from 'atomic-router-react'
 import { useForm } from 'effector-forms'
+import { useUnit } from 'effector-react'
 import { FormEventHandler } from 'react'
 
 export const RegisterPage = () => {
+  const { registerPending } = useUnit({ registerPending: registerQuery.$pending })
   const { fields, eachValid, submit, isValid, hasError, errorText } = useForm(
     authModel.registerForm,
   )
@@ -25,7 +28,7 @@ export const RegisterPage = () => {
         </Link>
       </Text>
 
-      <form onSubmit={handleSubmit} className="space-y-4 mt-6">
+      <form onSubmit={handleSubmit} className="space-y-4 mt-6 min-w-[350px] ">
         <TextInput
           label="Email"
           placeholder="you@mantine.dev"
@@ -70,12 +73,12 @@ export const RegisterPage = () => {
             input: 'text-black',
           }}
           aria-required="true"
-          value={fields.configPassword.value}
-          onChange={(e) => fields.configPassword.onChange(e.target.value)}
-          error={hasError('configPassword') ? errorText('configPassword') : null}
+          value={fields.confirmPassword.value}
+          onChange={(e) => fields.confirmPassword.onChange(e.target.value)}
+          error={hasError('confirmPassword') ? errorText('confirmPassword') : null}
           data-testid="password-input"
-          aria-invalid={hasError('configPassword')}
-          aria-errormessage={errorText('configPassword')}
+          aria-invalid={hasError('confirmPassword')}
+          aria-errormessage={errorText('confirmPassword')}
         />
 
         <Button
@@ -83,6 +86,8 @@ export const RegisterPage = () => {
           fullWidth
           radius="md"
           size="md"
+          loaderProps={{ type: 'dots' }}
+          loading={registerPending}
           disabled={!eachValid || !isValid}
           className="bg-blue-500 hover:bg-blue-600 text-white"
         >

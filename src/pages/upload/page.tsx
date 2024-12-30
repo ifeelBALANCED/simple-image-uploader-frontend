@@ -1,83 +1,114 @@
-import { Button, Group, Text, Title } from '@mantine/core'
-import { Dropzone, MIME_TYPES } from '@mantine/dropzone'
+import { uploadFileQuery } from '@/entities/images'
+import { UploadForm } from '@/features/images'
+import {
+  Container,
+  Group,
+  List,
+  Loader,
+  Paper,
+  Progress,
+  Stack,
+  Text,
+  ThemeIcon,
+  Title,
+  rem,
+} from '@mantine/core'
+import { IconCloudUpload, IconPhoto, IconX } from '@tabler/icons-react'
+import { useUnit } from 'effector-react'
 import { useState } from 'react'
 
+const ACCEPTED_FILE_TYPES = {
+  'image/jpeg': '.jpg, .jpeg',
+  'image/png': '.png',
+  'image/gif': '.gif',
+}
+
 export const UploadPage = () => {
-  const [files, setFiles] = useState<File[]>([])
-  const [error, setError] = useState<string | null>(null)
+  const { isFileUploading } = useUnit({
+    isFileUploading: uploadFileQuery.$pending,
+  })
+  const [uploadProgress, setUploadProgress] = useState(0)
 
-  const handleDrop = (droppedFiles: File[]) => {
-    const file = droppedFiles[0]
-
-    if (file) {
-      const allowedTypes = [MIME_TYPES.png, MIME_TYPES.jpeg, 'image/gif']
-      if (!allowedTypes.includes(file.type)) {
-        setError('Invalid file type. Only JPG, PNG, and GIF files are allowed.')
-        setFiles([])
-        return
-      }
-
-      const maxSizeInBytes = 2 * 1024 * 1024
-      if (file.size > maxSizeInBytes) {
-        setError('File size exceeds 2MB. Please upload a smaller file.')
-        setFiles([])
-        return
-      }
-
-      setError(null)
-      setFiles([file])
-    }
-  }
-
-  const handleUpload = () => {
-    if (files.length > 0) {
-      console.log('Uploading file:', files[0])
-      // Handle upload logic
-    }
+  // Simulate upload progress
+  if (isFileUploading && uploadProgress < 100) {
+    setTimeout(() => {
+      setUploadProgress((prev) => Math.min(prev + 10, 100))
+    }, 300)
   }
 
   return (
-    <>
-      <Title className="text-3xl font-bold">Upload Image</Title>
-      <Text className="mt-2 text-gray-600 text-center">
-        Drag and drop a JPG, PNG, or GIF file (max size: 2MB), or click to select one.
-      </Text>
+    <Container size="md" py="xl">
+      <Paper radius="md" p="xl" withBorder>
+        <Stack gap="lg">
+          <Group justify="center">
+            <ThemeIcon size={54} radius="md" variant="light" color="blue">
+              <IconCloudUpload style={{ width: rem(34), height: rem(34) }} />
+            </ThemeIcon>
+          </Group>
 
-      <Dropzone
-        onDrop={handleDrop}
-        accept={[MIME_TYPES.png, MIME_TYPES.jpeg, 'image/gif']}
-        maxFiles={1}
-        className="w-full max-w-3xl mt-6 p-6 border-2 border-dashed rounded-lg bg-white border-gray-300"
-      >
-        <Text size="sm" className="flex items-center text-gray-600">
-          Drag and drop your image here or click to browse.
-        </Text>
-      </Dropzone>
+          <Stack gap="xs" align="center">
+            <Title order={1} size="h2">
+              Upload Image
+            </Title>
+            <Text c="dimmed" ta="center" maw={400}>
+              Share your images securely. We support various formats for your convenience.
+            </Text>
+          </Stack>
 
-      {error && (
-        <Text c="red" className="mt-4">
-          {error}
-        </Text>
-      )}
+          {isFileUploading ? (
+            <Paper withBorder p="md" radius="md">
+              <Stack gap="md">
+                <Group p="apart">
+                  <Group>
+                    <IconPhoto size="1.5rem" style={{ color: 'var(--mantine-color-blue-6)' }} />
+                    <div>
+                      <Text size="sm" fw={500}>
+                        Uploading your image
+                      </Text>
+                      <Text size="xs" c="dimmed">
+                        Please wait while we process your file
+                      </Text>
+                    </div>
+                  </Group>
+                  <Loader size="sm" />
+                </Group>
 
-      {files.length > 0 && (
-        <div className="mt-4 w-full max-w-3xl p-4 rounded-lg bg-gray-100">
-          <Text className="text-gray-700">
-            Selected File: <span className="font-bold">{files[0].name}</span>
-          </Text>
-          <Text className="text-gray-500">Size: {(files[0].size / 1024 / 1024).toFixed(2)} MB</Text>
-        </div>
-      )}
+                <Stack gap="xs">
+                  <Progress value={uploadProgress} size="sm" radius="xl" animated striped />
+                  <Text size="xs" c="dimmed" ta="center">
+                    {uploadProgress}% complete
+                  </Text>
+                </Stack>
+              </Stack>
+            </Paper>
+          ) : (
+            <Stack gap="xl">
+              <UploadForm />
 
-      <Group mt="lg">
-        <Button
-          className="bg-blue-600 text-white hover:bg-blue-700"
-          onClick={handleUpload}
-          disabled={files.length === 0}
-        >
-          Upload
-        </Button>
-      </Group>
-    </>
+              <Stack gap="xs">
+                <Text size="sm" fw={500} c="dimmed">
+                  File requirements:
+                </Text>
+                <List
+                  size="sm"
+                  spacing="xs"
+                  icon={
+                    <ThemeIcon color="gray" size={20} radius="xl">
+                      <IconX size="0.8rem" />
+                    </ThemeIcon>
+                  }
+                >
+                  <List.Item>Maximum file size: 5MB</List.Item>
+                  <List.Item>
+                    Supported formats: {Object.values(ACCEPTED_FILE_TYPES).join(', ')}
+                  </List.Item>
+                  <List.Item>Clear, non-corrupted files</List.Item>
+                </List>
+              </Stack>
+            </Stack>
+          )}
+        </Stack>
+      </Paper>
+    </Container>
   )
 }

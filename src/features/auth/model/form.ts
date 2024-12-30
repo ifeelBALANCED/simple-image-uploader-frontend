@@ -144,16 +144,12 @@ export const registerForm = createForm({
         }),
       ],
     },
-    configPassword: {
+    confirmPassword: {
       init: '',
       rules: [
         createRule({
           schema: yup.string().required('Confirm Password is required'),
           name: 'required',
-        }),
-        createRule({
-          schema: yup.string().oneOf([yup.ref('password'), undefined], 'Passwords must match'),
-          name: 'password-match',
         }),
       ],
     },

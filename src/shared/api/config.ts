@@ -1,26 +1,26 @@
 export const baseEndpoints = {
   UPLOAD: {
-    url: `/upload/`,
+    url: `/api/image/upload`,
     method: 'POST',
   },
-  IMAGE_PREVIEW: {
-    url: `/image-preview/`,
-    method: 'GET',
-  },
   IMAGES: {
-    url: `/images/`,
+    url: `/api/image/list`,
     method: 'GET',
   },
   REGISTER: {
-    url: `/register/`,
+    url: `/api/register`,
     method: 'POST',
   },
   LOGIN: {
-    url: `/login/`,
+    url: `/api/login`,
     method: 'POST',
   },
+  ME: {
+    url: `/api/me`,
+    method: 'GET',
+  },
   LOGOUT: {
-    url: `/logout/`,
+    url: `/api/logout`,
     method: 'POST',
   },
 } as const

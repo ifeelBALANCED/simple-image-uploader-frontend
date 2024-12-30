@@ -49,8 +49,5 @@ export default ({ mode }) => {
         '@': path.resolve(__dirname, './src'),
       },
     },
-    test: {
-      root: path.resolve(__dirname, './src'),
-    },
   })
 }
